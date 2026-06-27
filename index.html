@@ -1,15 +1,47 @@
-<body style="background-color: #0d0d11; color: #ffffff; font-family: 'Poppins', sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0;">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AuraSlayer's Website</title>
+</head>
+<body style="background-color: #0d0d11; color: #ffffff; font-family: 'Poppins', sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; overflow: hidden;">
 
-    <div style="text-align: center; padding: 20px;">
-        
+    <div id="welcome-screen" style="text-align: center; padding: 20px; transition: opacity 0.5s ease;">
         <h1 style="font-size: 3.5rem; margin-bottom: 30px; letter-spacing: 1px; text-shadow: 0 0 20px rgba(255,255,255,0.2);">
             Welcome to AuraSlayer’s website!!!
         </h1>
         
-        <a href="#" style="display: inline-block; padding: 16px 50px; font-size: 1.3rem; font-weight: bold; color: #000000; background-color: #ffffff; border-radius: 50px; text-decoration: none; box-shadow: 0 10px 25px rgba(255,255,255,0.15); transition: 0.2s;">
+        <button onclick="goToGuide()" style="display: inline-block; padding: 16px 50px; font-size: 1.3rem; font-weight: bold; color: #000000; background-color: #ffffff; border: none; border-radius: 50px; cursor: pointer; box-shadow: 0 10px 25px rgba(255,255,255,0.15); transition: transform 0.2s;">
             GO
-        </a>
-        
+        </button>
     </div>
 
+    <div id="guide-screen" style="text-align: center; padding: 20px; display: none; opacity: 0; transition: opacity 0.5s ease;">
+        <h1 style="font-size: 3rem; margin-bottom: 20px; color: #ff9800; text-shadow: 0 0 20px rgba(255,152,0,0.3);">
+            Minecraft Texture Pack Guide
+        </h1>
+        <p style="font-size: 1.5rem; max-width: 600px; line-height: 1.6; color: #e0e0e0;">
+            This website will teach you how to make a minecraft texture pack for free!
+        </p>
+    </div>
+
+    <script>
+        function goToGuide() {
+            const welcome = document.getElementById('welcome-screen');
+            const guide = document.getElementById('guide-screen');
+
+            welcome.style.opacity = '0';
+            
+            setTimeout(() => {
+                welcome.style.display = 'none';
+                guide.style.display = 'block';
+                setTimeout(() => {
+                    guide.style.opacity = '1';
+                }, 50);
+            }, 500);
+        }
+    </script>
+
 </body>
+</html>
