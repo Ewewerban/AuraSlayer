@@ -5,41 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AuraSlayer's Website</title>
 </head>
-<body style="background-color: #0d0d11; color: #ffffff; font-family: 'Poppins', sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; overflow: hidden;">
+<body style="background-color: #0d0d11; color: #ffffff; font-family: 'Poppins', sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; overflow-x: hidden; box-sizing: border-box; padding: 20px;">
 
-    <div id="welcome-screen" style="text-align: center; padding: 20px; transition: opacity 0.5s ease;">
+    <div id="screen-1" style="text-align: center; transition: opacity 0.4s ease; width: 100%; max-width: 800px;">
         <h1 style="font-size: 3.5rem; margin-bottom: 30px; letter-spacing: 1px; text-shadow: 0 0 20px rgba(255,255,255,0.2);">
             Welcome to AuraSlayer’s website!!!
         </h1>
         
-        <button onclick="goToGuide()" style="display: inline-block; padding: 16px 50px; font-size: 1.3rem; font-weight: bold; color: #000000; background-color: #ffffff; border: none; border-radius: 50px; cursor: pointer; box-shadow: 0 10px 25px rgba(255,255,255,0.15); transition: transform 0.2s;">
+        <button onclick="changeScreen('screen-1', 'screen-2')" style="display: inline-block; padding: 16px 50px; font-size: 1.3rem; font-weight: bold; color: #000000; background-color: #ffffff; border: none; border-radius: 50px; cursor: pointer; box-shadow: 0 10px 25px rgba(255,255,255,0.15);">
             GO
         </button>
     </div>
 
-    <div id="guide-screen" style="text-align: center; padding: 20px; display: none; opacity: 0; transition: opacity 0.5s ease;">
+    <div id="screen-2" style="text-align: center; display: none; opacity: 0; transition: opacity 0.4s ease; width: 100%; max-width: 800px;">
         <h1 style="font-size: 3rem; margin-bottom: 20px; color: #ff9800; text-shadow: 0 0 20px rgba(255,152,0,0.3);">
             Minecraft Texture Pack Guide
         </h1>
-        <p style="font-size: 1.5rem; max-width: 600px; line-height: 1.6; color: #e0e0e0;">
+        <p style="font-size: 1.5rem; line-height: 1.6; color: #e0e0e0; margin-bottom: 40px;">
             This website will teach you how to make a minecraft texture pack for free!
         </p>
+        
+        <div style="display: flex; gap: 20px; justify-content: center;">
+            <button onclick="changeScreen('screen-2', 'screen-1')" style="padding: 12px 35px; font-size: 1.1rem; font-weight: bold; color: #ffffff; background-color: transparent; border: 2px solid #ffffff; border-radius: 50px; cursor: pointer;">
+                Back
+            </button>
+            <button onclick="changeScreen('screen-2', 'screen-3')" style="padding: 12px 35px; font-size: 1.1rem; font-weight: bold; color: #000000; background-color: #ffffff; border: none; border-radius: 50px; cursor: pointer; box-shadow: 0 5px 15px rgba(255,255,255,0.15);">
+                Next
+            </button>
+        </div>
+    </div>
+
+    <div id="screen-3" style="text-align: center; display: none; opacity: 0; transition: opacity 0.4s ease; width: 100%; max-width: 750px;">
+        <h2 style="font-size: 2.5rem; margin-bottom: 25px; color: #ff9800;">How to make it:</h2>
+        
+        <p style="font-size: 1.2rem; line-height: 1.8; color: #e0e0e0; text-align: justify; margin-bottom: 30px;">
+            To make a free Minecraft texture pack, go to <a href="https://createtextures.com" target="_blank" style="color: #ff9800; text-decoration: underline;">createtextures.com</a> and create your textures search the texture you want to change. After you finished making the texture for your item or block press save texture and you could move on to your next texture. When you finished the pack simply download it and open minecraft go to options then resourse packs and drag your downloaded texture pack to Minecraft(java) and you're done! now you could use your own custom texture pack.
+        </p>
+
+        <p style="font-size: 1.1rem; margin-bottom: 40px; color: #b0b0b0;">
+            Don't know what to do? <a href="#" id="yt-link" style="color: #ff4444; font-weight: bold; text-decoration: none; border-bottom: 1px dashed #ff4444;">Click here</a>
+        </p>
+
+        <div style="margin-bottom: 60px;">
+            <button onclick="changeScreen('screen-3', 'screen-2')" style="padding: 12px 35px; font-size: 1.1rem; font-weight: bold; color: #ffffff; background-color: transparent; border: 2px solid #ffffff; border-radius: 50px; cursor: pointer;">
+                Back
+            </button>
+        </div>
+
+        <div id="client-extra-space" style="margin-top: 50px; padding: 40px; border: 2px dashed #33333b; border-radius: 15px; color: #666672;">
+            <p style="margin: 0; font-style: italic;">(Reserved space for future content)</p>
+        </div>
     </div>
 
     <script>
-        function goToGuide() {
-            const welcome = document.getElementById('welcome-screen');
-            const guide = document.getElementById('guide-screen');
+        function changeScreen(currentId, nextId) {
+            const currentScreen = document.getElementById(currentId);
+            const nextScreen = document.getElementById(nextId);
 
-            welcome.style.opacity = '0';
+            currentScreen.style.opacity = '0';
             
             setTimeout(() => {
-                welcome.style.display = 'none';
-                guide.style.display = 'block';
+                currentScreen.style.display = 'none';
+                nextScreen.style.display = 'block';
                 setTimeout(() => {
-                    guide.style.opacity = '1';
+                    nextScreen.style.opacity = '1';
                 }, 50);
-            }, 500);
+            }, 400);
         }
     </script>
 
